@@ -6,6 +6,22 @@ Here we are deploying a FLASK-app connecting to a remote postgres database. We h
 
 This tutorial requires the Kubernetes command-line interface (CLI) and the Helm CLI installed, Minikube, and additional configuration to bring it all together.
 
+Docker image should be pushed to docker hub.
+
+'''
+docker build -f docker/Dockerfile -t my-flask-app .
+docker tag my-flask-app your_username/my-flask-app
+docker push your_username/my-flask-app
+'''
+
+To run the docker image locally
+
+'''
+docker run -p 5000:5000 -e USERNAME=your_db_username -e PASSWORD=your_db_password -e DB_HOST=your_db_host -e DB_NAME=your_db_name my-flask-app
+
+'''
+
+
 # Steps
 
 # Clone the repo to install vault:
@@ -100,7 +116,7 @@ Now Run the below commands in vault shell
 '''
 vault secrets enable -path=internal kv-v2
 
-vault kv put internal/database/config USERNAME="your_username" PASSWORD="your_password" DB_HOST="your_hots" DB_NAME="your_db"
+vault kv put internal/database/config USERNAME="your_db_username" PASSWORD="your_db_password" DB_HOST="your_db_host" DB_NAME="your_db_name"
 
 '''
 
