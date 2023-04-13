@@ -179,7 +179,7 @@ To install the chart.
 ```
 cd chart
 
-helm install my-flask-app ./hello-world
+helm install my-flask-app ./my-flask-app
 ```
 
 To upgrade the chart
