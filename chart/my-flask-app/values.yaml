@@ -31,9 +31,11 @@ podAnnotations:
     {{- with secret "internal/database/config" -}}
     export DB_HOST='{{.Data.data.DB_HOST }}'
     export DB_NAME='{{.Data.data.DB_NAME }}'
-    export PASSWORD='{{.Data.data.PASSWORD }}'
-    export USERNAME='{{.Data.data.USERNAME }}'
-    {{- end -}}
+    {{ end -}}
+    {{- with secret "database/creds/my-role" -}}
+    export USERNAME='{{ .Data.username }}'
+    export PASSWORD='{{ .Data.password }}'
+    {{ end -}}
   vault.hashicorp.com/role: my-flask-app
 
 podSecurityContext: {}
