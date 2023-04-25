@@ -4,6 +4,9 @@
 
 To setup flask application on Minikube with vault secret injection can be followed here:
 
+[https://github.com/lakshyasharma1196/Vault-integration-on-flask-app](https://github.com/lakshyasharma1196/Vault-integration-on-flask-app)
+
+
 We are moving one step further to use the dynamic secrets for DB connection instead of static credentials. After complete the steps provided in above link. Dont launch the application instead follow these steps:
 
 # Steps:
